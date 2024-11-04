@@ -1,6 +1,7 @@
 package projeto2;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -10,29 +11,34 @@ public class App {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int opcao;
+        int opcao = -1; // Inicializando a variável opcao
         do {
             mostrarMenu();
-            opcao = scanner.nextInt();
-            scanner.nextLine();  // Consome a nova linha
-            switch (opcao) {
-                case 1:
-                    cadastrarProduto();
-                    break;
-                case 2:
-                    editarProduto();
-                    break;
-                case 3:
-                    deletarProduto();
-                    break;
-                case 4:
-                    listarProdutos();
-                    break;
-                case 0:
-                    System.out.println("Saindo do sistema...");
-                    break;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();  // Consome a nova linha
+                switch (opcao) {
+                    case 1:
+                        cadastrarProduto();
+                        break;
+                    case 2:
+                        editarProduto();
+                        break;
+                    case 3:
+                        deletarProduto();
+                        break;
+                    case 4:
+                        listarProdutos();
+                        break;
+                    case 0:
+                        System.out.println("Saindo do sistema...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, insira um número.");
+                scanner.nextLine(); // Limpa a entrada inválida
             }
         } while (opcao != 0);
     }
