@@ -4,13 +4,27 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Aluno aluno1 = new Aluno();
+        Aluno aluno1 = new Aluno("José", "Roberto");
 
-        aluno1.nome = "José";
+        //Exemplo passando valores para super classe (De forma direta)
         aluno1.cor = Cor.MORENO;
-        aluno1.idade = 12;
         aluno1.sexo = Genero.MASCULINO;
+        aluno1.nota1 = 7;
 
-        //System.out.println(aluno1.obterNomeCompleto());
+        //Idade não pode receber o valor de forma diret, pois o seu atributo não está mais publico. E sim privado!
+        //aluno1.idade = 12;
+
+        //Forma correta de passar valor para esse atributo.
+        aluno1.setIdade(12);
+        aluno1.setNota2(5);
+
+        
+
+        System.out.println(aluno1.obterNomeCompleto());
+
+        System.out.println("\n\n");
+
+        System.out.println(aluno1.toString());
+
     }
 }
